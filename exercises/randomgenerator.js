@@ -7,17 +7,17 @@ class RandomGenerator{
 		this.min = min;
 		this.max = max;
 		//makes storage for the random number
-		this.randomNumber = this.generate();
+		this.randomNumber = this.generate(this.min, this.max);
 	}
-	generate(){
+	generate(min=1, max=10){
 		//make a random value between the minimum and maximum values
-		return Math.floor(Math.Random()*this.max) +this.min
+		return Math.floor(Math.random()*this.max) +this.min
 		//and store the number into the storage from the constructor
 	}
-	getRange(min=1, max=10){
+	getRange(){
 		//return an object with min and max, min being the minimum value for the generator, max being the maximum value
 		//returns a basic object literal
-		return {min: min, max: max}
+		return {min: this.min, max: this.max}
 	}
 	getNum(){
 		return this.generate();
