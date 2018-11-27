@@ -1,90 +1,65 @@
-
 class Calculator{
-	constructor(){
-		//takes in nothing
-		//make storage for the operator and the numbers
+    constructor(){
 		this.operator = null;
-		this.number = null;
-		this.equationArray = [];
-	}
-	loadOperator( operator ){
-		//adds the operator to the next calculation
-		debugger;
-		this.equationArray.push(this.operator)
-		//takes in the operator
-		//checks if it is a valid operation (+-*/)
-			//save the op to the constructor storage
-			//return true
-		//or return false if not the right operator
-		if(operator === "+" || operator === "-" || operator === "/" || operator === "*"){
-			this.operator = operator
-			return true;
-		}
-		else{
-			return false;
-		}
-
-
-	}
-	loadNumber( number ){
-		debugger;
-		//takes in a number and stores it as one of the numbers to perform math on
-		//takes in 1 number
-		//checks if it is actually a number and if we have fewer than 2 numbers
-		//if it is a number, and we have 2 or fewer numbers, store it
-			//return the number of numbers stored
-		//otherwise return false (too many numbers stored)
-		if(isNaN(number)){
-			return
-		}
-		if(!isNaN(number) && this.equationArray.length < 3){
-			return number
-		}
-		else{
-			return false;
-		}
-		
-	}
-	calculate(num1,num2,operator){
-		debugger;
-		//calculate the result of the stored numbers and operator
-		//takes in nothing
-		//calculates with the operator and 2 numbers
-		//clears out the stored numbers
-		//returns the calculated result
-	const num = parseFloat(num1);
-    const num02 = parseFloat(num2);
-        switch (operator) {
-            case "+":
-                value = num + num02;
-                break;
-            case "-":
-                value = num - num02;
-                break;
-            case "*":
-                value = num * num02;
-                break;
-            case "×":
-                value = num * num02;
-                break;
-            case "x":
-                value = num * num02;
-                break;
-            case "/":
-                value = num / num02;
-                break;
-            case "÷":
-                value = num / num02;
+		this.num1 = null;
+        this.num2 = null;
+        //takes in nothing
+        //make storage for the operator and the numbers
+    }
+    loadOperator(operator){
+        if(operator === '+' || operator === '-' || operator === '*' || operator === '/'){
+            this.operator = operator;
+            return true;
+        } else {
+            return false;
         }
-        if(value % 2 === 0) {
-            return value;
+        //adds the operator to the next calculation
+        //takes in the operator
+        //checks if it is a valid operation (+-*/)
+            //save the op to the constructor storage
+            //return true
+        //or return false if not the right operator
+    }
+    loadNumber(number){
+    
+
+        if(typeof number === 'number' && this.num1 === null){
+            this.num1 = number;
+            return 1;
+        } else if(typeof number === 'number' && this.num2 === null){
+            this.num2 = number;
+            return 2;
+        } else {
+            return false;
         }
-        else{
-            return value.toFixed(5);
-		}
 
-		var newResult = do_math(equationArray[0], equationArray[2], equationArray[1]);
-            equationArray.splice(0, 3, newResult);
-	}
+        //takes in a number and stores it as one of the numbers to perform math on
+        //takes in 1 number
+        //checks if it is actually a number and if we have fewer than 2 numbers
+        //if it is a number, and we have 2 or fewer numbers, store it
+            //return the number of numbers stored
+        //otherwise return false (too many numbers stored)
+    }
+    calculate(){
+		let result = 0;
+        if(this.operator === '+'){
+            result = this.num1 + this.num2;
+        } else if(this.operator === '-'){
+            result = this.num1 - this.num2;
+        } else if(this.operator === '*'){
+            result = this.num1 * this.num2;
+        } else if(this.operator === '/'){
+            result = this.num1 / this.num2;
+        }
 
+        this.num1 = null;
+        this.num2 = null;
+
+        return result;
+        //calculate the result of the stored numbers and operator
+        //takes in nothing
+        //calculates with the operator and 2 numbers
+        //clears out the stored numbers
+        //returns the calculated result
+    }
 }
